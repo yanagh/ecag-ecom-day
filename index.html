@@ -4,104 +4,164 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>eCommerce Georgia 2026 — Shaping the Next Generation of Commerce</title>
-<meta name="description" content="eCommerce Georgia 2026 — 6 November, Sheraton Grand Tbilisi Metekhi Palace. The largest eCommerce gathering in Georgia: international and local speakers, live demos and panel discussions.">
+<meta name="description" content="6 November 2026, Sheraton Grand Tbilisi Metekhi Palace. The leading regional eCommerce event — partnership, speaking and booth opportunities now open.">
 <meta property="og:title" content="eCommerce Georgia 2026">
-<meta property="og:description" content="Shaping the Next Generation of Commerce. 6 November 2026, Sheraton Grand Tbilisi Metekhi Palace.">
+<meta property="og:description" content="Shaping the Next Generation of Commerce. 6 November 2026, Tbilisi.">
 <meta property="og:image" content="assets/img/v26/og.jpg">
 <meta name="theme-color" content="#0D061E">
 <link rel="icon" href="assets/img/logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/img/v26/cart.webp" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   eCommerce Georgia 2026 — attendee landing page
-   Built from the designer's "Web Visual 2026" mockup (1920px artboard).
-   Sizes are fluid: most clamp() maxima are the mockup's px values at 1920.
+   eCommerce Georgia 2026 — landing page
+   Design system lifted from the 2026 presentation deck.
    ============================================================ */
 
 :root{
-  --page:#EDEDED;
-  --white:#fff;
-  --ink:#232323;
-  --ink-60:#5f5f5f;
+  --plum-900:#050219;
+  --plum-800:#0D061E;
+  --plum-700:#1a0f28;
+  --plum-600:#2b2135;
+  --magenta:#B25280;
+  --magenta-deep:#8d4169;
   --coral:#FF6D58;
-  --coral-2:#FF7861;          /* icon strokes, hero date */
-  --coral-hi:#ff846f;
-  --plum:#0D061E;
+  --coral-soft:#ff8f7d;
+  --ink:#ffffff;
+  --ink-70:rgba(255,255,255,.72);
+  --ink-55:rgba(255,255,255,.56);
 
-  --gut:clamp(16px,2.9vw,56px);
-  --maxw:1808px;
-  --r:clamp(18px,2vw,40px);     /* card radius */
-  --sect:clamp(56px,4.6vw,88px);/* section spacing */
-  --h2:clamp(30px,3.55vw,68px);
+  --card:rgba(255,255,255,.045);
+  --card-hi:rgba(255,255,255,.075);
+  --line:rgba(255,255,255,.09);
+  --radius:26px;
+
+  --gut:clamp(20px,5vw,64px);
+  --maxw:1240px;
+  --sect-y:clamp(72px,10vw,140px);
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:clamp(72px,6vw,110px);-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{
   margin:0;
   font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
-  background:var(--page);
+  background:var(--plum-800);
   color:var(--ink);
   font-size:16px;
-  line-height:1.45;
+  line-height:1.6;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3,p{margin:0}
-ul{margin:0;padding:0;list-style:none}
-.wrap{width:min(100% - 2*var(--gut), var(--maxw));margin-inline:auto}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,h3,h4{margin:0;line-height:1.14;letter-spacing:-.015em;font-weight:700}
+p{margin:0}
+::selection{background:var(--coral);color:#2a0d08}
 
-/* ---------- buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:.8em;
-  background:var(--coral);color:#fff;text-decoration:none;
-  border-radius:999px;font-weight:500;text-transform:uppercase;letter-spacing:.02em;
-  transition:background .2s, transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s;
+/* ---------- page-wide atmosphere: the deck's corner glows ---------- */
+.bg{position:fixed;inset:0;z-index:-2;background:var(--plum-800);pointer-events:none}
+.bg::before,.bg::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+.bg::before{width:70vw;height:70vw;left:-28vw;top:8vh;background:radial-gradient(circle,var(--magenta) 0%,transparent 68%)}
+.bg::after{width:60vw;height:60vw;right:-24vw;top:52vh;background:radial-gradient(circle,var(--magenta-deep) 0%,transparent 68%)}
+
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+section{position:relative;padding-block:var(--sect-y)}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;inset:0 0 auto;z-index:60;
+  background:transparent;border-bottom:1px solid transparent;
+  transition:border-color .3s,background .3s,backdrop-filter .3s;
 }
-.btn:hover{background:var(--coral-hi);transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,109,88,.32)}
-.btn:focus-visible,.nav a:focus-visible,.car-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
-.btn svg{width:1.55em;height:auto;flex:none}
-.btn-sm{font-size:clamp(11px,.75vw,14px);height:clamp(36px,3.33vw,64px);padding-inline:clamp(16px,1.9vw,36px)}
-.btn-bold{font-weight:700}
-
-/* ---------- section titles ---------- */
-.h2{color:var(--coral);font-size:var(--h2);font-weight:700;text-align:center;letter-spacing:-.01em;line-height:1.1;margin-bottom:clamp(20px,2.2vw,42px)}
-.sub{text-align:center;color:var(--ink-60);font-size:clamp(13px,.95vw,18px);margin:calc(-1*clamp(8px,1.2vw,24px)) auto clamp(20px,2.2vw,42px)}
-section{padding-top:var(--sect)}
-
-/* ============ NAV ============ */
-.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,backdrop-filter .3s,box-shadow .3s}
-.nav.scrolled{background:rgba(13,6,30,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(13,6,30,.18)}
-.nav-in{display:flex;align-items:center;gap:clamp(16px,2vw,40px);height:clamp(64px,5.5vw,106px);color:#fff}
-.nav-logo img{height:clamp(30px,2.45vw,47px);width:auto}
-.nav-links{display:flex;gap:clamp(18px,2.6vw,76px);margin-left:auto}
-.nav-links a{text-decoration:none;font-weight:700;font-size:clamp(11px,.92vw,18px);text-transform:uppercase;letter-spacing:.02em;opacity:.95;position:relative;padding:6px 0}
-.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-.nav-links a:hover::after{transform:scaleX(1)}
-.nav .btn-tix{margin-left:clamp(8px,2vw,90px);height:clamp(38px,3.33vw,64px);min-width:clamp(120px,13.9vw,266px);font-size:clamp(11px,.8vw,15px);font-weight:400}
+.nav.stuck,.nav.open{border-bottom-color:var(--line);background:rgba(13,6,30,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.nav-in{display:flex;align-items:center;gap:28px;height:72px;max-width:none;padding-inline:clamp(20px,5vw,96px)}
+.nav-logo img{height:34px;width:auto}
+.nav-links{display:flex;gap:26px;margin-left:auto;list-style:none;padding:0;margin-block:0}
+.nav-links a{
+  text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--ink-70);transition:color .2s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--coral)}
+.nav-cta{margin-left:auto}
+.nav-links + .nav-cta{margin-left:0}
 .nav-toggle{display:none;margin-left:auto;background:none;border:0;color:#fff;padding:8px;cursor:pointer}
 .nav-toggle svg{width:26px;height:26px}
 
-/* ============ HERO ============ */
-.hero{
-  position:relative;overflow:hidden;isolation:isolate;
-  min-height:clamp(620px,56.25vw,1080px);
-  border-radius:0 0 clamp(24px,3.1vw,60px) clamp(24px,3.1vw,60px);
-  background:#130a21 url(assets/img/v26/hero-bg.webp) center/cover no-repeat;
-  color:#fff;padding:0;
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 26px;border-radius:999px;text-decoration:none;
+  font-size:14px;font-weight:700;letter-spacing:.02em;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .18s cubic-bezier(.2,.8,.3,1),box-shadow .18s,background .18s,border-color .18s;
+  white-space:nowrap;
 }
-.hero-in{position:relative;z-index:2;padding-top:clamp(120px,14.2vw,272px);padding-bottom:clamp(48px,4vw,80px)}
-.hero h1{font-weight:700;font-size:clamp(40px,5.8vw,112px);line-height:1.05;letter-spacing:-.01em}
+.btn-primary{background:var(--coral);color:#2a0d08;box-shadow:0 8px 30px -10px rgba(255,109,88,.85)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px -10px rgba(255,109,88,.95)}
+.btn-ghost{border-color:rgba(255,255,255,.24);color:#fff;background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--coral);color:var(--coral);transform:translateY(-2px)}
+.btn-sm{padding:11px 20px;font-size:13px}
+
+/* ---------- shared card ---------- */
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:clamp(24px,3vw,36px);
+  backdrop-filter:blur(6px);
+  transition:transform .3s cubic-bezier(.2,.8,.3,1),background .3s,border-color .3s;
+}
+.card:hover{transform:translateY(-4px);background:var(--card-hi);border-color:rgba(255,255,255,.16)}
+.ico{width:56px;height:56px;object-fit:contain;margin-bottom:20px}
+.ico-sm{width:34px;height:34px;object-fit:contain;flex:none}
+
+/* ---------- section heading ---------- */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--coral)}
+.h2{font-size:clamp(30px,4.4vw,50px);font-weight:700}
+.lede{font-size:clamp(16px,1.6vw,19px);color:var(--ink-70);max-width:62ch;margin-top:18px}
+.sect-head{margin-bottom:clamp(38px,5vw,64px)}
+.sect-head.center{text-align:center;display:flex;flex-direction:column;align-items:center}
+.sect-head.center .lede{text-align:center}
+
+/* ============================================================
+   1 — HERO
+   ============================================================ */
+/* One screen tall at most (16:9 of the width, capped by the viewport), same
+   background and cart placement as the attendee page (hidden/attendee-page.html). */
+.hero{
+  position:relative;overflow:hidden;isolation:isolate;padding:0;
+  display:flex;align-items:center;
+  min-height:clamp(560px,min(100vh,56.25vw),1080px);
+  min-height:clamp(560px,min(100svh,56.25vw),1080px);
+  border-radius:0 0 clamp(24px,3vw,56px) clamp(24px,3vw,56px);
+  background:#130a21 url(assets/img/v26/hero-bg.webp) center/cover no-repeat;
+}
+.hero-in{
+  position:relative;z-index:2;max-width:none;
+  padding-inline:clamp(20px,5vw,96px);
+  padding-block:calc(72px + clamp(12px,2.6vw,48px)) clamp(36px,4.5vw,72px);
+}
+.hero h1{font-size:clamp(40px,4.8vw,92px);font-weight:700;letter-spacing:-.02em;line-height:1.04}
 .hero h1 .yr{display:block;font-weight:300;font-style:italic;letter-spacing:0}
-.hero .tag{margin-top:clamp(28px,3.4vw,66px);font-weight:600;font-style:italic;font-size:clamp(20px,2.5vw,48px);line-height:1.22;max-width:14em}
-.hero .date{margin-top:clamp(22px,2.6vw,50px);color:var(--coral-2);text-transform:uppercase;font-size:clamp(13px,1.46vw,28px);letter-spacing:.005em}
-.hero .btn-tix{margin-top:clamp(20px,1.6vw,32px);height:clamp(50px,4.9vw,94px);min-width:clamp(170px,20.2vw,388px);font-size:clamp(14px,1.3vw,25px);font-weight:400;margin-left:clamp(0px,.2vw,4px)}
+.hero .tag{
+  font-size:clamp(19px,2.2vw,42px);font-weight:600;font-style:italic;line-height:1.22;
+  margin-top:clamp(18px,2.6vw,50px);max-width:14em;
+}
+.hero-meta{
+  margin-top:clamp(18px,2.2vw,42px);
+  font-size:clamp(13px,1.2vw,22px);font-weight:700;color:var(--coral);letter-spacing:.04em;line-height:1.6;text-transform:uppercase;
+}
+.hero-meta .venue{display:block;font-weight:500;color:var(--ink-70);letter-spacing:.06em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(20px,2.4vw,44px)}
+.hero-cta .btn{font-size:clamp(14px,.95vw,17px);padding:clamp(14px,1.1vw,20px) clamp(24px,1.9vw,36px)}
 .hero-cart{
   position:absolute;z-index:1;pointer-events:none;
   left:42.7%;bottom:0;width:69.6%;height:auto;max-width:none;
@@ -109,175 +169,227 @@ section{padding-top:var(--sect)}
 }
 @keyframes roll-in{from{opacity:0;transform:translateX(9%)}to{opacity:1;transform:none}}
 
-/* ============ INTRO ============ */
-.intro{
-  background:var(--white);border-radius:clamp(18px,1.7vw,32px);
-  padding:clamp(32px,4.3vw,82px) clamp(20px,5vw,96px);
-  text-align:center;font-size:clamp(15px,1.56vw,30px);line-height:1.3;
+/* ============================================================
+   2 — THE EVENT
+   ============================================================ */
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.value-grid .card{text-align:center;display:flex;flex-direction:column;align-items:center}
+.value-grid h3{font-size:clamp(17px,1.7vw,21px);max-width:14ch}
+.format-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,24px);margin-top:clamp(16px,2vw,24px)}
+.format-grid .card{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:start}
+.format-grid .ico{width:52px;height:52px;margin:0;grid-row:span 2}
+.format-grid h3{font-size:clamp(18px,1.8vw,22px);align-self:center}
+.format-grid p{color:var(--ink-70);font-size:15px;grid-column:2}
+
+/* ============================================================
+   3 — FOCUS & TOPICS
+   ============================================================ */
+.focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.focus-grid .card{text-align:center;display:flex;flex-direction:column;align-items:center}
+.focus-grid .num{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--coral);opacity:.85;margin-bottom:14px}
+.focus-grid h3{font-size:clamp(19px,2vw,24px);margin-bottom:10px}
+.focus-grid p{color:var(--ink-70);font-size:15px}
+.explore{margin-top:clamp(46px,5vw,72px)}
+.explore h3{font-size:clamp(21px,2.4vw,28px);margin-bottom:clamp(22px,3vw,32px)}
+.explore-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.explore-grid li{
+  list-style:none;display:flex;align-items:center;gap:20px;
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:20px 26px;font-size:clamp(15px,1.5vw,17px);font-weight:600;
+  transition:transform .28s cubic-bezier(.2,.8,.3,1),background .28s,border-color .28s;
 }
-.intro p + p{margin-top:.6em}
-.intro .btn{margin-top:clamp(20px,2.1vw,40px);font-weight:700}
+.explore-grid li:hover{transform:translateY(-3px);background:var(--card-hi);border-color:rgba(255,255,255,.16)}
+.explore-grid{padding:0;margin:0}
 
-/* ============ GRADIENT CARDS ============ */
-.g1{background:linear-gradient(35deg,#8b4a71 0%,#5d324f 100%)}
-.g2{background:linear-gradient(35deg,#5b304e 0%,#331c38 100%)}
-.g3{background:linear-gradient(35deg,#301a35 0%,#150b22 100%)}
-.s1{background:linear-gradient(35deg,#864869 0%,#5c314f 100%)}
-.s2{background:linear-gradient(35deg,#5a304f 0%,#3f223f 100%)}
-.s3{background:linear-gradient(35deg,#3e223e 0%,#27152e 100%)}
-.s4{background:linear-gradient(35deg,#251429 0%,#130a21 100%)}
+/* ============================================================
+   4 — TRACK RECORD
+   ============================================================ */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,22px)}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,2.8vw,34px)}
+.stat b{display:block;font-size:clamp(38px,5.2vw,66px);font-weight:800;color:var(--coral);line-height:1;letter-spacing:-.03em}
+.stat span{display:block;margin-top:12px;color:var(--ink-70);font-size:14.5px;font-weight:500}
+.stat.text b{font-size:clamp(17px,1.9vw,22px);line-height:1.28;font-weight:700}
 
-.topics{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,3vw,58px)}
-.topic{
-  border-radius:var(--r);color:#fff;
-  min-height:clamp(180px,19.6vw,376px);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,1.9vw,36px);
-  padding:24px;text-align:center;
-  transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s;
+.speakers{margin-top:clamp(40px,5vw,64px)}
+.speakers h3,.gallery h3{font-size:clamp(19px,2.1vw,25px);margin-bottom:22px}
+.speaker-row{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.5vw,18px)}
+.speaker-row img{border-radius:18px;width:100%;border:1px solid var(--line);transition:transform .3s cubic-bezier(.2,.8,.3,1)}
+.speaker-row img:hover{transform:translateY(-4px)}
+.past-note{margin-top:16px;font-size:13px;color:var(--ink-55)}
+
+.gallery{margin-top:clamp(40px,5vw,64px)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:clamp(12px,1.5vw,18px)}
+.gallery-grid figure{margin:0;overflow:hidden;border-radius:20px;border:1px solid var(--line)}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.3,1)}
+.gallery-grid figure:hover img{transform:scale(1.06)}
+.gallery-grid figure:nth-child(1){grid-row:span 2}   /* portrait shot, column 1 */
+.gallery-grid figure:nth-child(6){grid-column:1/-1}  /* wide audience shot, full width */
+
+/* ============================================================
+   5 — PARTNERS
+   ============================================================ */
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,24px)}
+.panel{background:#fff;border-radius:var(--radius);padding:0;overflow:hidden;border:1px solid rgba(255,255,255,.14)}
+.panel img{width:100%}
+.panel.media{grid-column:1/-1;max-width:900px;margin-inline:auto;margin-top:clamp(16px,2vw,24px)}
+
+/* ============================================================
+   6 — PACKAGES
+   ============================================================ */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px)}
+.tier{
+  position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;
+  padding:clamp(26px,3vw,36px);display:flex;flex-direction:column;
+  transition:transform .3s cubic-bezier(.2,.8,.3,1),background .3s,border-color .3s;
 }
-.topic:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(40,18,45,.28)}
-.topic img{height:clamp(56px,6vw,116px);width:auto}
-.topic h3{font-weight:400;font-size:clamp(17px,1.77vw,34px);line-height:1.2}
-
-/* ============ PEOPLE CARDS ============ */
-.people{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.2vw,42px) clamp(14px,2vw,38px)}
-.person{
-  display:grid;grid-template-columns:49.5% 1fr;align-items:stretch;
-  background:var(--white);border-radius:clamp(14px,1.25vw,24px);overflow:hidden;
-  min-height:clamp(150px,15.7vw,302px);
-  transition:transform .3s cubic-bezier(.2,.8,.3,1),box-shadow .3s;
+.tier:hover{transform:translateY(-5px);background:var(--card-hi);border-color:rgba(255,255,255,.18)}
+.tier.feature{border-color:rgba(255,109,88,.42);background:linear-gradient(160deg,rgba(255,109,88,.10),rgba(255,255,255,.04))}
+.tier .flag{
+  align-self:flex-start;margin-bottom:14px;font-size:10.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:#2a0d08;background:var(--coral);padding:5px 11px;border-radius:999px;
 }
-.person:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
-.person .ph{position:relative;border-radius:inherit;overflow:hidden;background:#c6c6c6}
-.person .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
-.person .info{padding:clamp(14px,2.1vw,40px) clamp(12px,1.1vw,22px) clamp(14px,1.4vw,26px) clamp(14px,1.1vw,22px);display:flex;flex-direction:column}
-.person .nm{font-weight:700;font-size:clamp(15px,1.35vw,26px);line-height:1.2}
-.person .nm span{display:block}
-.person .role{margin-top:.55em;font-size:clamp(11.5px,1vw,19px);line-height:1.18}
-.person .co{font-style:italic;font-size:clamp(11.5px,1vw,19px);line-height:1.18;color:#555}
-.person .brand{margin-top:auto;align-self:flex-end;padding-top:10px;font-weight:700;font-size:clamp(12px,1.05vw,20px);color:#3b3b3b;letter-spacing:-.01em}
-.person.tba .ph{display:grid;place-items:center;background:#c6c6c6}
-.person.tba .ph svg{width:44%;height:auto;color:#e6e6e6}
-.person.tba .nm{color:#8a8a8a}
-.person.more{grid-template-columns:1fr;place-items:center;text-align:center;color:#fff;padding:24px;background:linear-gradient(35deg,#3e223e 0%,#170c24 100%)}
-.person.more .nm{font-size:clamp(18px,1.6vw,30px)}
-.person.more p{margin-top:.5em;opacity:.8;font-size:clamp(12px,.95vw,18px)}
-.person.more .btn{margin-top:clamp(12px,1.2vw,24px)}
+.tier h3{font-size:clamp(19px,2vw,23px);max-width:13ch}
+.tier .price{margin-top:auto;padding-top:26px;font-size:clamp(26px,3vw,36px);font-weight:800;color:var(--coral);letter-spacing:-.02em}
+.tier .price small{display:block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-55);margin-bottom:6px}
+.tier ul{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:9px}
+.tier ul li{font-size:14px;color:var(--ink-70);padding-left:20px;position:relative}
+.tier ul li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--coral);opacity:.75}
+.tiers-2{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(14px,1.8vw,22px);max-width:66%}
 
-/* ============ DEMO LIVE ============ */
-.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.7vw,32px);padding-inline:clamp(0px,.6vw,12px)}
-.demo{
-  position:relative;overflow:hidden;background:var(--white);border-radius:clamp(14px,1.25vw,24px);
-  min-height:clamp(220px,24.8vw,476px);
-  padding:clamp(18px,2.9vw,56px) clamp(18px,2.9vw,56px);
-  display:flex;flex-direction:column;
-  transition:transform .3s cubic-bezier(.2,.8,.3,1),box-shadow .3s;
+.detail{margin-top:clamp(48px,6vw,80px)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tab{
+  padding:11px 20px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);
+  color:var(--ink-70);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;
+  transition:all .22s;white-space:nowrap;
 }
-.demo:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
-.demo:hover .play{color:var(--coral);transform:scale(1.04)}
-.demo-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;position:relative;z-index:1}
-.demo .who{font-size:clamp(11px,.95vw,18px);font-weight:700;line-height:1.2}
-.demo .who small{display:block;font-weight:400;font-size:.8em;margin-top:.2em}
-.demo .logo{font-weight:700;font-size:clamp(18px,2vw,40px);letter-spacing:-.03em;line-height:1;text-align:right;color:#232f3e}
-.demo .logo small{display:block;font-size:.62em;color:#009393;margin-top:.25em}
-.demo h3{position:relative;z-index:1;margin-top:auto;margin-bottom:clamp(8px,2vw,40px);color:var(--coral);font-weight:700;font-size:clamp(17px,1.77vw,34px);line-height:1.2;max-width:12.5em}
-.play{position:absolute;right:-6%;bottom:-12%;width:62%;max-width:320px;color:#c9c9c9;transition:color .3s,transform .4s cubic-bezier(.2,.8,.3,1)}
-
-/* ============ STATS ============ */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.65vw,32px);width:min(100%,1674px);margin-inline:auto}
-.stat{
-  border-radius:var(--r);color:#fff;
-  min-height:clamp(190px,25.1vw,482px);
-  padding:clamp(20px,2.3vw,44px);
-  display:flex;flex-direction:column;justify-content:center;
+.tab:hover{color:#fff;border-color:rgba(255,255,255,.28)}
+.tab[aria-selected="true"]{background:var(--coral);border-color:var(--coral);color:#2a0d08}
+.pane[hidden]{display:none}
+.ptable{border:1px solid rgba(255,109,88,.42);border-radius:14px;overflow:hidden}
+.prow{display:grid;grid-template-columns:minmax(210px,1fr) 2.1fr;border-bottom:1px solid rgba(255,109,88,.42)}
+.prow:last-child{border-bottom:0}
+.prow .k{
+  display:flex;align-items:center;gap:14px;padding:16px 20px;font-weight:700;font-size:15px;
+  border-right:1px solid rgba(255,109,88,.42);background:rgba(255,255,255,.03);
 }
-.stat b{display:block;color:var(--coral);font-weight:700;font-size:clamp(36px,4.25vw,82px);line-height:1;letter-spacing:-.01em}
-.stat span{display:block;margin-top:clamp(12px,1.9vw,36px);font-size:clamp(14px,1.56vw,30px);line-height:1.3;min-height:3.9em}
+.prow .v{padding:16px 22px;color:var(--ink-70);font-size:14.5px;display:flex;align-items:center}
+.prow .v ul{margin:0;padding-left:18px}
+.prow .v li{margin:2px 0}
+.pfoot{display:flex;justify-content:flex-end;align-items:center;gap:18px;margin-top:20px;flex-wrap:wrap}
+.pfoot .chip{background:var(--coral);color:#2a0d08;font-size:clamp(20px,2.4vw,30px);font-weight:800;padding:9px 22px;letter-spacing:-.01em}
 
-/* ============ CAROUSEL ============ */
-.car{position:relative;padding-inline:clamp(40px,4.8vw,92px);width:min(100%,1724px);margin-inline:auto}
-.car-track{
-  display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2*var(--cg))/3);gap:var(--cg);--cg:clamp(10px,1.3vw,24px);
-  overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;
-}
-.car-track::-webkit-scrollbar{display:none}
-.car-track figure{margin:0;scroll-snap-align:start;border-radius:clamp(14px,1.25vw,24px);overflow:hidden;aspect-ratio:500/830;background:#ccc}
-.car-track img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.3,1)}
-.car-track figure:hover img{transform:scale(1.04)}
-.car-btn{position:absolute;top:50%;translate:0 -50%;width:clamp(36px,3vw,56px);height:clamp(36px,3vw,56px);display:grid;place-items:center;background:none;border:0;border-radius:50%;cursor:pointer;color:var(--coral);transition:background .2s,opacity .2s}
-.car-btn:hover{background:rgba(255,109,88,.12)}
-.car-btn:disabled{opacity:.28;cursor:default;background:none}
-.car-btn svg{width:45%;height:auto}
-.car-prev{left:0}.car-next{right:0}
+/* ============================================================
+   7 — ABOUT
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.about-grid .card{text-align:center;display:flex;flex-direction:column;align-items:center}
+.about-grid .ico{width:60px;height:60px}
+.about-grid h3{color:var(--coral);font-size:clamp(21px,2.3vw,27px);margin-bottom:16px}
+.about-grid p{color:var(--ink-70);font-size:15px}
 
-/* ============ PARTNERS ============ */
-.partners{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.7vw,32px)}
-.partners img{width:100%;border-radius:clamp(14px,1.25vw,24px)}
-.partners .media{grid-column:1/-1;max-width:1100px;justify-self:center}
-
-/* ============ FOOTER ============ */
-footer{
-  margin-top:var(--sect);
-  background:#170c24 url(assets/img/v26/footer-bg.webp) right bottom/cover no-repeat;
+/* ============================================================
+   8 — CTA / FOOTER
+   ============================================================ */
+.cta{
+  position:relative;overflow:hidden;isolation:isolate;text-align:center;
   border-radius:clamp(28px,3.4vw,64px) clamp(28px,3.4vw,64px) 0 0;
-  color:#fff;text-align:center;
-  padding:clamp(40px,4.4vw,84px) var(--gut) clamp(24px,2vw,40px);
+  background:#130a21;padding:clamp(64px,8vw,120px) 0 0;
 }
-footer .lead{font-size:clamp(15px,1.56vw,30px);line-height:1.25}
-footer .lead a{display:inline-block;font-weight:700;text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s}
-footer .lead a:hover{border-color:var(--coral)}
-.foot-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 28px;margin-top:clamp(28px,3vw,56px);font-size:13px;color:rgba(255,255,255,.7)}
-.foot-row img{height:26px;width:auto;opacity:.9}
-.foot-row a{text-decoration:none}
-.foot-row a:hover{color:#fff}
+/* the hero background, mirrored, so the page opens and closes on the same visual */
+.cta::before{
+  content:"";position:absolute;inset:0;z-index:-1;transform:scaleX(-1);
+  background:url(assets/img/v26/hero-bg.webp) center bottom/cover no-repeat;
+}
+.cta::after{
+  content:"";position:absolute;inset:auto 0 0;height:220px;z-index:-1;pointer-events:none;
+  background:linear-gradient(to top,rgba(13,6,30,.92),rgba(13,6,30,0));
+}
+.cta-in{position:relative}
+.cta h2{font-size:clamp(32px,5vw,64px);font-weight:800;font-style:italic;letter-spacing:-.025em;line-height:1.08;max-width:16ch;margin-inline:auto}
+.cta h2 em{font-style:italic;font-weight:300}
+.cta .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:clamp(28px,4vw,42px)}
+.contact{
+  margin-top:clamp(40px,5vw,64px);display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:15px;color:var(--ink-70);
+}
+.contact strong{color:#fff;font-size:17px}
+.contact a{color:var(--coral);text-decoration:none;font-weight:700}
+.contact a:hover{text-decoration:underline}
+.socials{display:flex;gap:11px;margin-top:24px}
+.socials a{
+  width:44px;height:44px;border-radius:12px;background:var(--coral);color:#2a0d08;
+  display:grid;place-items:center;transition:transform .2s,filter .2s;
+}
+.socials a:hover{transform:translateY(-3px);filter:brightness(1.08)}
+.socials svg{width:21px;height:21px;fill:currentColor}
 
-/* ============ REVEAL ============ */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.8,.3,1),transform .8s cubic-bezier(.2,.8,.3,1)}
+.foot-in{
+  position:relative;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between;
+  margin-top:clamp(56px,7vw,96px);padding-block:26px;border-top:1px solid rgba(255,255,255,.12);
+  font-size:13px;color:var(--ink-55);
+}
+.foot-in img{height:28px;width:auto;opacity:.9}
+.foot-in a{color:var(--ink-70);text-decoration:none}
+.foot-in a:hover{color:var(--coral)}
+
+/* ---------- reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.3,1),transform .7s cubic-bezier(.2,.8,.3,1)}
 .rv.in{opacity:1;transform:none}
-.no-js .rv{opacity:1;transform:none}
 
-/* ============ RESPONSIVE ============ */
-@media (max-width:1180px){
-  .people{grid-template-columns:repeat(2,1fr)}
-  .demos{grid-template-columns:repeat(2,1fr)}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .hero{display:block;min-height:0}
+  .hero-in{padding-bottom:0}
+  .hero-cart{position:relative;left:auto;width:min(140%,960px);margin:clamp(8px,3vw,24px) 0 0}
   .stats{grid-template-columns:repeat(2,1fr)}
-  .stat{min-height:200px}
-  .stat span{min-height:0}
-}
-@media (max-width:900px){
-  .nav-links,.nav .btn-tix{display:none}
+  .speaker-row{grid-template-columns:repeat(3,1fr)}
+  .tiers{grid-template-columns:repeat(2,1fr)}
+  .tiers-2{max-width:none}
+  .nav-links{display:none}
   .nav-toggle{display:block}
-  .nav.open{background:var(--plum)}
   .nav.open .nav-links{
-    display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;
-    background:var(--plum);box-shadow:0 20px 40px rgba(13,6,30,.35);padding:8px var(--gut) 24px;
+    display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--plum-800);border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(5,2,25,.45);
+    padding:8px 0;
   }
-  .nav.open .nav-links a{display:block;padding:14px 0;font-size:14px;border-bottom:1px solid rgba(255,255,255,.08)}
-  .nav.open .nav-links a::after{display:none}
-  .nav.open .nav-links li:last-child{padding-top:18px}
-  .nav.open .nav-links .m-tix a{display:flex;height:48px;padding:0;border:0;font-size:14px}
-  .nav-links .m-tix{display:block}
-
-  .hero{min-height:0}
-  .hero-in{padding-top:112px;padding-bottom:0}
-  .hero-cart{position:relative;left:auto;width:min(140%,1100px);margin:clamp(8px,4vw,32px) 0 0 0}
-  .topics{grid-template-columns:1fr}
-  .topic{min-height:160px;flex-direction:row;justify-content:flex-start;padding:24px 28px;text-align:left}
-  .topic img{height:52px}
-  .car-track{grid-auto-columns:calc((100% - var(--cg))/2)}
-  .partners{grid-template-columns:1fr}
+  .nav.open .nav-links a{display:block;padding:14px var(--gut);font-size:14px}
+  .nav-cta{display:none}
+  .nav.open{background:var(--plum-800)}
 }
-@media (min-width:901px){ .nav-links .m-tix{display:none} }
-@media (max-width:640px){
-  .people,.demos{grid-template-columns:1fr}
-  .person{min-height:150px;grid-template-columns:42% 1fr}
-  .stats{gap:10px}
-  .stat{min-height:170px;padding:18px}
-  .car{padding-inline:0}
-  .car-track{grid-auto-columns:78%}
-  .car-btn{display:none}
-  .intro{text-align:left}
-  .intro .btn{width:100%}
+@media (max-width:760px){
+  .value-grid,.focus-grid,.about-grid,.format-grid,.explore-grid,
+  .partner-grid,.tiers,.tiers-2{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .gallery-grid figure:nth-child(1){grid-row:span 1}
+  .gallery-grid figure:nth-child(6){grid-column:span 2}
+  .speaker-row{grid-template-columns:repeat(2,1fr)}
+  .prow{grid-template-columns:1fr}
+  .foot-in{flex-direction:column;justify-content:center;text-align:center;gap:10px}
+  .prow .k{border-right:0;border-bottom:1px solid rgba(255,109,88,.32)}
+  section{padding-block:56px}
+  .sect-head{margin-bottom:28px}
+  .sect-head .h2 br{display:none}
+  .value-grid,.format-grid,.focus-grid,.about-grid{gap:12px}
+  .format-grid{margin-top:12px}
+  .value-grid .card,.format-grid .card,.focus-grid .card,.about-grid .card{
+    display:grid;grid-template-columns:44px 1fr;gap:4px 18px;align-items:center;
+    text-align:left;padding:20px 22px;border-radius:20px;
+  }
+  .value-grid .card > *,.format-grid .card > *,.focus-grid .card > *,.about-grid .card > *{grid-column:2}
+  .card .ico{grid-column:1 !important;grid-row:1 / span 3;align-self:start;width:44px;height:44px;margin:2px 0 0}
+  .value-grid .ico{align-self:center}
+  .value-grid h3,.format-grid h3,.focus-grid h3,.about-grid h3{max-width:none;font-size:17px;margin:0;line-height:1.3}
+  .format-grid p,.focus-grid p,.about-grid p{font-size:14.5px;line-height:1.5}
+  .focus-grid .num{margin:0;font-size:11px}
+  .about-grid h3{margin-bottom:2px}
+  .card:hover{transform:none}
+}
+@media (max-width:460px){
+  .stats{grid-template-columns:1fr}
+  .speaker-row{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -286,234 +398,429 @@ footer .lead a:hover{border-color:var(--coral)}
 }
 </style>
 </head>
-<body class="no-js">
-
-<!-- Ticket icon, reused by every Tickets button -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-ticket" viewBox="0 0 34 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round">
-    <path d="M2 3h30v5.2a3.8 3.8 0 0 0 0 7.6V21H2v-5.2a3.8 3.8 0 0 0 0-7.6z"/>
-    <path d="M11 3v18" stroke-dasharray="2.2 2.6"/>
-    <path d="M16 8.5h10M16 12h10M16 15.5h10"/>
-  </symbol>
-  <symbol id="i-person" viewBox="0 0 24 24" fill="currentColor">
-    <circle cx="12" cy="8" r="4.6"/><path d="M2.5 23c.6-5.6 4.6-8.8 9.5-8.8s8.9 3.2 9.5 8.8z"/>
-  </symbol>
-  <symbol id="i-play" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.6">
-    <circle cx="100" cy="100" r="98"/><circle cx="100" cy="100" r="72"/>
-    <path d="M78 58v84l66-42z" stroke-linejoin="round"/>
-  </symbol>
-</svg>
+<body>
+<div class="bg"></div>
 
 <!-- ══════════════ NAV ══════════════ -->
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="nav-logo" href="#top" aria-label="eCommerce Association Georgia — back to top"><img src="assets/img/logo.png" alt="eCommerce Association Georgia"></a>
+    <a class="nav-logo" href="#top" aria-label="eCommerce Association Georgia"><img src="assets/img/logo.png" alt="eCommerce Association Georgia"></a>
     <ul class="nav-links" id="navlinks">
-      <li><a href="#about">About Conference</a></li>
-      <li><a href="#speakers">Speakers</a></li>
-      <li><a href="#last-year">Last Year</a></li>
+      <li><a href="#event">The Event</a></li>
+      <li><a href="#focus">Focus</a></li>
+      <li><a href="#track">Track Record</a></li>
       <li><a href="#partners">Partners</a></li>
-      <li><a href="#contacts">Contacts</a></li>
-      <li class="m-tix"><a class="btn btn-sm js-tickets" href="#">Tickets</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#about">About</a></li>
     </ul>
-    <a class="btn btn-tix js-tickets" href="#"><svg aria-hidden="true"><use href="#i-ticket"/></svg>Tickets</a>
-    <button class="nav-toggle" id="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
+    <div class="nav-cta"><a class="btn btn-primary btn-sm" href="#contact">Become a Partner</a></div>
+    <button class="nav-toggle" id="navtoggle" aria-label="Menu" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </header>
 
-<main>
-<!-- ══════════════ HERO ══════════════ -->
+<!-- ══════════════ 1 · HERO ══════════════ -->
 <section class="hero" id="top">
   <div class="wrap hero-in">
     <h1>eCommerce Georgia <span class="yr">2026</span></h1>
     <p class="tag">Shaping the Next Generation of Commerce</p>
-    <p class="date">6 November | Sheraton Grand Tbilisi Metekhi Palace</p>
-    <a class="btn btn-tix js-tickets" href="#"><svg aria-hidden="true"><use href="#i-ticket"/></svg>Tickets</a>
+    <p class="hero-meta">6 November 2026<span class="venue">Sheraton Grand Tbilisi Metekhi Palace</span></p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#packages">Partnership Packages</a>
+      <a class="btn btn-ghost" href="#contact">Apply to Speak</a>
+    </div>
   </div>
   <img class="hero-cart" src="assets/img/v26/cart.webp"
        srcset="assets/img/v26/cart-900.webp 900w, assets/img/v26/cart.webp 1600w"
-       sizes="(max-width:900px) 150vw, 70vw"
+       sizes="(max-width:1024px) 140vw, 70vw"
        width="1600" height="865" alt="Chrome shopping cart with the eCommerce Georgia mark, speeding forward" fetchpriority="high">
 </section>
 
-<!-- ══════════════ INTRO ══════════════ -->
-<section id="about">
+<!-- ══════════════ 2 · THE EVENT ══════════════ -->
+<section id="event">
   <div class="wrap">
-    <div class="intro rv">
-      <p>Now in its fourth edition, eCommerce Georgia will once again bring the leaders of the industry to Tbilisi, under the organization of the eCommerce Association Georgia.</p>
-      <p>Join the largest eCommerce gathering in Georgia — gain first-hand insights from top international and local brands, discover the latest industry trends, and expand your professional network with meaningful new connections.</p>
-      <p>eCommerce Georgia 2026 will take place on 6&nbsp;November at the Sheraton Grand Tbilisi Metekhi Palace.</p>
-      <a class="btn btn-sm js-tickets" href="#">Attend the Conference</a>
+    <div class="sect-head center rv">
+      <span class="eyebrow">The Event</span>
+      <h2 class="h2">Join us in Tbilisi for a dynamic, <br>hands-on event exploring the <br>future of digital commerce</h2>
+    </div>
+
+    <div class="value-grid rv">
+      <div class="card"><img class="ico" src="assets/img/icons/chip.png" alt=""><h3>Real conversations, not theory</h3></div>
+      <div class="card"><img class="ico" src="assets/img/icons/magnify-gears.png" alt=""><h3>Practical insights you can apply immediately</h3></div>
+      <div class="card"><img class="ico" src="assets/img/icons/people.png" alt=""><h3>Meaningful connections across industries</h3></div>
+    </div>
+
+    <div class="format-grid rv">
+      <div class="card">
+        <img class="ico" src="assets/img/icons/podium.png" alt="">
+        <h3>Talks &amp; Panels</h3>
+        <p>Global and local experts sharing real business cases</p>
+      </div>
+      <div class="card">
+        <img class="ico" src="assets/img/icons/demo.png" alt="">
+        <h3>Live Demonstrations &amp; Workshops</h3>
+        <p>Tools, platforms, and solutions in action</p>
+      </div>
+      <div class="card">
+        <img class="ico" src="assets/img/icons/route.png" alt="">
+        <h3>Expo Area</h3>
+        <p>Company booths and direct engagement with attendees</p>
+      </div>
+      <div class="card">
+        <img class="ico" src="assets/img/icons/handshake.png" alt="">
+        <h3>Networking</h3>
+        <p>Curated spaces for meaningful connections</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ KEY TOPICS ══════════════ -->
-<section id="topics">
+<!-- ══════════════ 3 · FOCUS & TOPICS ══════════════ -->
+<section id="focus">
   <div class="wrap">
-    <h2 class="h2 rv">Key Topics</h2>
-    <ul class="topics rv">
-      <li class="topic g1"><img src="assets/img/v26/icon-cart.svg" alt=""><h3>Future Retail Experience</h3></li>
-      <li class="topic g2"><img src="assets/img/v26/icon-growth.svg" alt=""><h3>Growth Infrastructure</h3></li>
-      <li class="topic g3"><img src="assets/img/v26/icon-crossborder.svg" alt=""><h3>Cross-Border Commerce</h3></li>
-    </ul>
+    <div class="sect-head center rv">
+      <span class="eyebrow">Key Focus Areas 2026</span>
+      <h2 class="h2">Three pillars driving the agenda</h2>
+    </div>
+
+    <div class="focus-grid rv">
+      <div class="card">
+        <span class="num">01</span>
+        <img class="ico" src="assets/img/v26/icon-cart.svg" alt="">
+        <h3>Future Retail Experience</h3>
+        <p>AI + Omnichannel + Social Commerce</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <img class="ico" src="assets/img/v26/icon-growth.svg" alt="">
+        <h3>Growth Infrastructure</h3>
+        <p>Trust, Payments &amp; Logistics</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <img class="ico" src="assets/img/v26/icon-crossborder.svg" alt="">
+        <h3>Cross-Border Commerce</h3>
+        <p>Global Markets &amp; Trade</p>
+      </div>
+    </div>
+
+    <div class="explore rv">
+      <h3>Why attend &amp; what we&rsquo;ll explore</h3>
+      <ul class="explore-grid">
+        <li><img class="ico-sm" src="assets/img/icons/trends.png" alt="">Future trends shaping commerce</li>
+        <li><img class="ico-sm" src="assets/img/icons/ecosystem.png" alt="">Key ecosystem connections</li>
+        <li><img class="ico-sm" src="assets/img/icons/cases.png" alt="">Real business cases and insights</li>
+        <li><img class="ico-sm" src="assets/img/icons/growth.png" alt="">What drives sustainable growth</li>
+        <li><img class="ico-sm" src="assets/img/icons/tools.png" alt="">New tools and technologies</li>
+        <li><img class="ico-sm" src="assets/img/icons/global.png" alt="">Regional and global perspectives</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<!-- ══════════════ SPEAKERS ══════════════ -->
-<section id="speakers">
+<!-- ══════════════ 4 · TRACK RECORD ══════════════ -->
+<section id="track">
   <div class="wrap">
-    <h2 class="h2 rv">Speakers</h2>
-    <p class="sub rv">Featured speakers from previous editions. The 2026 line-up is being announced in stages.</p>
-    <ul class="people rv">
-      <li class="person">
-        <div class="ph"><img src="assets/img/v26/speaker-1.jpg" alt="" loading="lazy" width="480" height="503"></div>
-        <div class="info"><p class="nm"><span>Matias</span><span>Undurraga</span></p><p class="role">Enterprise Technologist</p><p class="co">Amazon Web Services (AWS)</p><p class="brand">aws</p></div>
-      </li>
-      <li class="person">
-        <div class="ph"><img src="assets/img/v26/speaker-2.jpg" alt="" loading="lazy" width="480" height="503"></div>
-        <div class="info"><p class="nm"><span>Yevgen</span><span>Bilodid</span></p><p class="role">Director, Digital Solutions CIS&nbsp;SEE Region</p><p class="co">Visa</p><p class="brand">VISA</p></div>
-      </li>
-      <li class="person">
-        <div class="ph"><img src="assets/img/v26/speaker-3.jpg" alt="" loading="lazy" width="480" height="503"></div>
-        <div class="info"><p class="nm"><span>Pavel</span><span>Krejsa</span></p><p class="role">Customer Engineer</p><p class="co">Google Cloud</p><p class="brand">Google Cloud</p></div>
-      </li>
-      <li class="person">
-        <div class="ph"><img src="assets/img/v26/speaker-4.jpg" alt="" loading="lazy" width="480" height="503"></div>
-        <div class="info"><p class="nm"><span>Irma</span><span>Papaleo</span></p><p class="role">Head of Websites and Digital Operations</p><p class="co">Amadeus</p><p class="brand">amadeus</p></div>
-      </li>
-      <li class="person">
-        <div class="ph"><img src="assets/img/v26/speaker-5.jpg" alt="" loading="lazy" width="480" height="503"></div>
-        <div class="info"><p class="nm"><span>Aysel</span><span>Afandizada</span></p><p class="role">Head of Brand Marketing Unit</p><p class="co">Azintelecom</p><p class="brand">AZINTELECOM</p></div>
-      </li>
-      <li class="person more s3">
-        <div><p class="nm">More speakers coming soon</p><p>International and local leaders in commerce, payments and technology.</p><a class="btn btn-sm js-tickets" href="#">Get your ticket</a></div>
-      </li>
-    </ul>
-  </div>
-</section>
+    <div class="sect-head rv">
+      <span class="eyebrow">Track Record</span>
+      <h2 class="h2">Three years of building the region&rsquo;s eCommerce stage</h2>
+      <p class="lede">eCommerce Georgia 2026 is the 4th annual edition — the leading regional event bringing together innovators, business leaders, technology providers, retailers, marketplaces, and policymakers.</p>
+    </div>
 
-<!-- ══════════════ PANEL DISCUSSIONS ══════════════ -->
-<section id="panels">
-  <div class="wrap">
-    <h2 class="h2 rv">Panel Discussions</h2>
-    <ul class="people rv" aria-label="Panelists to be announced">
-      <li class="person tba"><div class="ph"><svg aria-hidden="true"><use href="#i-person"/></svg></div><div class="info"><p class="nm"><span>Panelist</span><span>to be announced</span></p><p class="role">Panel line-up coming soon</p></div></li>
-      <li class="person tba"><div class="ph"><svg aria-hidden="true"><use href="#i-person"/></svg></div><div class="info"><p class="nm"><span>Panelist</span><span>to be announced</span></p><p class="role">Panel line-up coming soon</p></div></li>
-      <li class="person tba"><div class="ph"><svg aria-hidden="true"><use href="#i-person"/></svg></div><div class="info"><p class="nm"><span>Panelist</span><span>to be announced</span></p><p class="role">Panel line-up coming soon</p></div></li>
-    </ul>
-  </div>
-</section>
+    <div class="stats rv">
+      <div class="stat"><b>1500+</b><span>Attendees from across the region</span></div>
+      <div class="stat"><b>60+</b><span>Local and international speakers</span></div>
+      <div class="stat"><b>700+</b><span>Participants expected in 2026</span></div>
+      <div class="stat"><b>20+</b><span>Speakers &amp; experts in 2026</span></div>
+    </div>
 
-<!-- ══════════════ DEMO LIVE ══════════════ -->
-<section id="demo">
-  <div class="wrap">
-    <h2 class="h2 rv">Demo Live</h2>
-    <ul class="demos rv">
-      <li class="demo">
-        <div class="demo-top"><p class="who">Live demo<small>Amazon Web Services</small></p><p class="logo">aws</p></div>
-        <h3>The Future of Search</h3>
-        <svg class="play" aria-hidden="true"><use href="#i-play"/></svg>
-      </li>
-      <li class="demo">
-        <div class="demo-top"><p class="who">Live demo<small>CityPay.io &amp; Tether</small></p><p class="logo">CityPay.io<small>tether</small></p></div>
-        <h3>Try It Live: Seamless Crypto Checkout for eCommerce</h3>
-        <svg class="play" aria-hidden="true"><use href="#i-play"/></svg>
-      </li>
-      <li class="demo">
-        <div class="demo-top"><p class="who">Live demo<small>Storera</small></p><p class="logo">Storera</p></div>
-        <h3>How to Start Selling Online with Storera</h3>
-        <svg class="play" aria-hidden="true"><use href="#i-play"/></svg>
-      </li>
-    </ul>
-  </div>
-</section>
+    <div class="speakers rv">
+      <h3>Past speakers from leading global companies</h3>
+      <div class="speaker-row">
+        <img src="assets/img/speaker-1.jpg" alt="Matias Undurraga, Enterprise Technologist, AWS" loading="lazy">
+        <img src="assets/img/speaker-2.jpg" alt="Yevgen Bilodid, Director Digital Solutions CIS SEE Region, Visa" loading="lazy">
+        <img src="assets/img/speaker-3.jpg" alt="Pavel Krejsa, Customer Engineer, Google Cloud" loading="lazy">
+        <img src="assets/img/speaker-4.jpg" alt="Irma Papaleo, Head of Websites and Digital Operations, Amadeus" loading="lazy">
+        <img src="assets/img/speaker-5.jpg" alt="Aysel Afandizada, Head of Brand Marketing Unit, Azintelecom" loading="lazy">
+      </div>
+      <p class="past-note">Speakers from previous editions. The 2026 line-up is being announced in stages.</p>
+    </div>
 
-<!-- ══════════════ STATS ══════════════ -->
-<section id="experience">
-  <div class="wrap">
-    <h2 class="h2 rv">Last 2 Years&rsquo; Experience</h2>
-    <ul class="stats rv">
-      <li class="stat s1"><b>1200+</b><span>Attendees from across the region</span></li>
-      <li class="stat s2"><b>30+</b><span>Local and international speakers</span></li>
-      <li class="stat s3"><b>50+</b><span>Retailers &amp; Marketplaces</span></li>
-      <li class="stat s4"><b>20+</b><span>Media Representatives</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ══════════════ LAST YEAR ══════════════ -->
-<section id="last-year">
-  <div class="wrap">
-    <h2 class="h2 rv">Last Year Conference</h2>
-    <div class="car rv">
-      <div class="car-track" id="track" tabindex="0" aria-label="Photos from last year's conference">
-        <figure><img src="assets/img/event-1.jpg" alt="Panel discussion on the main stage" loading="lazy"></figure>
-        <figure><img src="assets/img/event-6.jpg" alt="Full auditorium during a keynote" loading="lazy"></figure>
-        <figure><img src="assets/img/event-2.jpg" alt="Keynote: Reimagining Retail with AI" loading="lazy"></figure>
+    <div class="gallery rv">
+      <h3>Engaging topics: AI commerce and innovations, online service platforms, live &amp; social eCommerce, Georgian eCommerce, regional trends and payments</h3>
+      <div class="gallery-grid">
         <figure><img src="assets/img/event-4.jpg" alt="Attendees at the eCommerce Day expo area" loading="lazy"></figure>
+        <figure><img src="assets/img/event-1.jpg" alt="Panel discussion on the main stage" loading="lazy"></figure>
+        <figure><img src="assets/img/event-2.jpg" alt="Keynote: Reimagining Retail with AI" loading="lazy"></figure>
         <figure><img src="assets/img/event-5.jpg" alt="Partner showcase panel" loading="lazy"></figure>
         <figure><img src="assets/img/event-3.jpg" alt="Hands-on demo booth" loading="lazy"></figure>
+        <figure><img src="assets/img/event-6.jpg" alt="Full auditorium during a keynote" loading="lazy"></figure>
       </div>
-      <button class="car-btn car-prev" id="prev" aria-label="Previous photos"><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2 2 10l8 8"/></svg></button>
-      <button class="car-btn car-next" id="next" aria-label="Next photos"><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m2 2 8 8-8 8"/></svg></button>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ PARTNERS ══════════════ -->
+<!-- ══════════════ 5 · PARTNERS ══════════════ -->
 <section id="partners">
   <div class="wrap">
-    <h2 class="h2 rv">Partners</h2>
-    <div class="partners rv">
-      <img src="assets/img/partners-2025.jpg" loading="lazy" alt="Partners 2025: Bank of Georgia Business, Visa, AWS, Aversi, BDO Digital, Delivo, Glovo, Elite, Acer, Storera, IE University, Web Features, Melo, CityPay.io, Tether, Quissly, Mazeg, Coincasa, Horsetours, Tass Vision, Google Cloud, Johnnie Walker, Azintelecom, Roaspig, Creatio, Wolt, SIMA, QuickShipper">
-      <img src="assets/img/partners-2024.jpg" loading="lazy" alt="Partners 2024: USAID, European Bank for Reconstruction and Development, European Union, AWS, eBay, Feev, Wolt, Bank of Georgia Business, Visa, Inspark, Gorgia, Gepha, Nova, Aversi, BDO Digital, Delivo, e360, Fiitt, Glovo, Solvit, Veli, Officemart, Quissly">
-      <img class="media" src="assets/img/media.jpg" loading="lazy" alt="Media coverage: Entrepreneur, Forbes Georgia, Business Media, Ambebi.ge, BPN Business Press News, Palitra News">
+    <div class="sect-head center rv">
+      <span class="eyebrow">Partners &amp; Media</span>
+      <h2 class="h2">The companies that build this with us</h2>
+      <p class="lede">Extensive media coverage across top industry and mainstream outlets.</p>
+    </div>
+    <div class="partner-grid rv">
+      <div class="panel"><img src="assets/img/partners-2025.jpg" alt="Partners 2025: Bank of Georgia Business, Visa, AWS, Aversi, BDO Digital, Delivo, Glovo, Elite, Acer, Storera, IE University, Web Features, Melo, CityPay.io, Tether, Quissly, Mazeg, Coincasa, Horsetours, Tass Vision, Google Cloud, Johnnie Walker, Azintelecom, Roaspig, Creatio, Wolt, SIMA, QuickShipper" loading="lazy"></div>
+      <div class="panel"><img src="assets/img/partners-2024.jpg" alt="Partners 2024: USAID, European Bank for Reconstruction and Development, European Union, AWS, eBay, Feev, Wolt, Bank of Georgia Business, Visa, Inspark, Gorgia, Gepha, Nova, Aversi, BDO Digital, Delivo, e360, Fiitt, Glovo, Solvit, Veli, Officemart, Quissly" loading="lazy"></div>
+      <div class="panel media"><img src="assets/img/media.jpg" alt="Media coverage: Entrepreneur, Forbes Georgia, Business Media, Ambebi.ge, BPN Business Press News, Palitra News" loading="lazy"></div>
     </div>
   </div>
 </section>
-</main>
 
-<!-- ══════════════ FOOTER / CONTACTS ══════════════ -->
-<footer id="contacts">
-  <p class="lead">For partnership opportunities:<br><a href="mailto:info@ecag.ge">info@ecag.ge</a></p>
-  <div class="foot-row">
-    <img src="assets/img/logo.png" alt="eCommerce Association Georgia">
-    <a href="sponsors.html">Partnership packages &rarr;</a>
-    <span>&copy; 2026 eCommerce Association Georgia</span>
+<!-- ══════════════ 6 · PACKAGES ══════════════ -->
+<section id="packages">
+  <div class="wrap">
+    <div class="sect-head rv">
+      <span class="eyebrow">Partnership Opportunities</span>
+      <h2 class="h2">Now open for 2026</h2>
+      <p class="lede">Five ways to put your brand in front of the region&rsquo;s eCommerce decision-makers — from a headline co-organizer role to a single booth or speaking slot.</p>
+    </div>
+
+    <div class="tiers rv">
+      <div class="tier feature">
+        <span class="flag">Headline</span>
+        <h3>Presenting Partner Package</h3>
+        <ul>
+          <li>Event presenter / co-organizer status</li>
+          <li>Two speaking slots, priority choice</li>
+          <li>Dedicated room + prime booth</li>
+          <li>Main host of the Exclusive Dinner</li>
+          <li>15 event tickets</li>
+        </ul>
+        <p class="price"><small>From</small>25 000 USD</p>
+      </div>
+      <div class="tier">
+        <h3>Main Partner Package</h3>
+        <ul>
+          <li>Logo across all event materials</li>
+          <li>One speaking slot, priority choice</li>
+          <li>Dedicated room + prime booth</li>
+          <li>2 Exclusive Dinner invitations</li>
+          <li>15 event tickets</li>
+        </ul>
+        <p class="price"><small>From</small>15 000 USD</p>
+      </div>
+      <div class="tier">
+        <h3>Speaker and Booth Package</h3>
+        <ul>
+          <li>Logo across all event materials</li>
+          <li>One speaking slot</li>
+          <li>One booth spot</li>
+          <li>1 Exclusive Dinner invitation</li>
+          <li>4 event tickets</li>
+        </ul>
+        <p class="price"><small>From</small>5 000 USD</p>
+      </div>
+    </div>
+
+    <div class="tiers-2 rv">
+      <div class="tier">
+        <h3>Speaker Package</h3>
+        <ul>
+          <li>One speaking slot</li>
+          <li>Logo placement, 1 dinner invitation</li>
+          <li>2 event tickets</li>
+        </ul>
+        <p class="price"><small>From</small>2 500 USD</p>
+      </div>
+      <div class="tier">
+        <h3>Booth Package</h3>
+        <ul>
+          <li>One booth spot</li>
+          <li>Logo placement, 1 dinner invitation</li>
+          <li>2 event tickets</li>
+        </ul>
+        <p class="price"><small>From</small>2 500 USD</p>
+      </div>
+    </div>
+
+    <!-- full comparison -->
+    <div class="detail rv">
+      <h3 class="h2" style="font-size:clamp(22px,2.6vw,32px);margin-bottom:22px">What&rsquo;s included, in full</h3>
+      <div class="tabs" role="tablist" aria-label="Partnership packages">
+        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true">Presenting Partner</button>
+        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false">Main Partner</button>
+        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false">Speaker &amp; Booth</button>
+        <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false">Speaker</button>
+        <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false">Booth</button>
+      </div>
+
+      <div class="pane" role="tabpanel" id="p1" aria-labelledby="t1">
+        <div class="ptable">
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-presenter.png" alt="">Event Presenter Status</div><div class="v">Be recognized as a presenter / co-organizer of the event</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-branding.png" alt="">Branding</div><div class="v">Logo displayed alongside the E-Commerce Association of Georgia on all materials</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-room.png" alt="">Dedicated Room</div><div class="v">A dedicated room for your brand&rsquo;s activities</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-activity.png" alt="">Activity Opportunities</div><div class="v">Ability to host and offer an activity of your choice</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-gift.png" alt="">Gift Distribution</div><div class="v">Opportunity to distribute gift kits to attendees</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-speaking.png" alt="">Speaking Opportunities</div><div class="v">Two speaking slots with priority choice</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-booth.png" alt="">Booth Allocation</div><div class="v">One prime booth spot with priority choice</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-recognition.png" alt="">Special Recognition</div><div class="v"><ul><li>Special thanks mentioned during the event and at the exclusive dinner</li><li>Mentioned as a presenter / co-organizer in all media releases across platforms</li></ul></div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-dinner.png" alt="">Exclusive Dinner</div><div class="v"><ul><li>Main Host of the Exclusive Dinner</li><li>5 invitations to the Exclusive Dinner with global e-commerce guests</li></ul></div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-ads.png" alt="">Advertising Rights</div><div class="v">Use of event photo and video materials for your advertising purposes</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-tickets.png" alt="">Event Tickets</div><div class="v">15 event tickets included</div></div>
+        </div>
+        <div class="pfoot"><span class="chip">25 000 USD</span></div>
+      </div>
+
+      <div class="pane" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+        <div class="ptable">
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-branding.png" alt="">Branding</div><div class="v">Logo placement across all physical and digital event materials (including event badge) positioned below the Presenting Partners</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-room.png" alt="">Dedicated Room</div><div class="v">A dedicated room for your brand&rsquo;s activities</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-activity.png" alt="">Activity Opportunities</div><div class="v">Ability to host and offer an activity of your choice</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-gift.png" alt="">Gift Distribution</div><div class="v">Opportunity to distribute gift kits to attendees</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-speaking.png" alt="">Speaking Opportunities</div><div class="v">One speaking slot with priority choice following the Presenting Partners</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-booth.png" alt="">Booth Allocation</div><div class="v">One prime booth spot with priority choice following the Presenting Partners</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-recognition.png" alt="">Special Recognition</div><div class="v">Special thanks mentioned during the event and at the exclusive dinner</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-dinner.png" alt="">Exclusive Dinner</div><div class="v"><ul><li>Main Host of the Exclusive Dinner</li><li>2 invitations to the Exclusive Dinner with global e-commerce guests</li></ul></div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-ads.png" alt="">Advertising Rights</div><div class="v">Use of event photo and video materials for your advertising purposes</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-tickets.png" alt="">Event Tickets</div><div class="v">15 event tickets included</div></div>
+        </div>
+        <div class="pfoot"><span class="chip">15 000 USD</span></div>
+      </div>
+
+      <div class="pane" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+        <div class="ptable">
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-branding.png" alt="">Branding</div><div class="v">Logo placement across all physical and digital event materials (except event badge)</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-gift.png" alt="">Gift Distribution</div><div class="v">Opportunity to distribute gift kits to attendees</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-speaking.png" alt="">Speaking Opportunities</div><div class="v">One speaking slot</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-booth.png" alt="">Booth Allocation</div><div class="v">One booth spot</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-dinner.png" alt="">Exclusive Dinner</div><div class="v">1 invitation to the Exclusive Dinner with global e-commerce guests</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-ads.png" alt="">Advertising Rights</div><div class="v">Use of event photo and video materials for your advertising purposes</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-tickets.png" alt="">Event Tickets</div><div class="v">4 event tickets included</div></div>
+        </div>
+        <div class="pfoot"><span class="chip">5 000 USD</span></div>
+      </div>
+
+      <div class="pane" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+        <div class="ptable">
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-branding.png" alt="">Branding</div><div class="v">Logo placement across all physical and digital event materials (except event badge)</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-speaking.png" alt="">Speaking Opportunities</div><div class="v">One speaking slot</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-dinner.png" alt="">Exclusive Dinner</div><div class="v">1 invitation to the Exclusive Dinner with global e-commerce guests</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-ads.png" alt="">Advertising Rights</div><div class="v">Use of event photo and video materials for your advertising purposes</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-tickets.png" alt="">Event Tickets</div><div class="v">2 event tickets included</div></div>
+        </div>
+        <div class="pfoot"><span class="chip">2 500 USD</span></div>
+      </div>
+
+      <div class="pane" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+        <div class="ptable">
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-branding.png" alt="">Branding</div><div class="v">Logo placement across all physical and digital event materials (except event badge)</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-booth.png" alt="">Booth Allocation</div><div class="v">One booth spot</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-dinner.png" alt="">Exclusive Dinner</div><div class="v">1 invitation to the Exclusive Dinner with global e-commerce guests</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-ads.png" alt="">Advertising Rights</div><div class="v">Use of event photo and video materials for your advertising purposes</div></div>
+          <div class="prow"><div class="k"><img class="ico-sm" src="assets/img/icons/pkg-tickets.png" alt="">Event Tickets</div><div class="v">2 event tickets included</div></div>
+        </div>
+        <div class="pfoot"><span class="chip">2 500 USD</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 7 · ABOUT ══════════════ -->
+<section id="about">
+  <div class="wrap">
+    <div class="sect-head center rv">
+      <span class="eyebrow">The Organizer</span>
+      <h2 class="h2">eCommerce Association Georgia</h2>
+    </div>
+    <div class="about-grid rv">
+      <div class="card">
+        <img class="ico" src="assets/img/v26/icon-mark.png" alt="">
+        <h3>Who We Are</h3>
+        <p>E-Commerce Association &ndash; Georgia</p>
+      </div>
+      <div class="card">
+        <img class="ico" src="assets/img/icons/mission.png" alt="">
+        <h3>Our Mission</h3>
+        <p>To promote, improve, and advocate for a thriving e-commerce environment through collaborative engagement with both the public and private sectors</p>
+      </div>
+      <div class="card">
+        <img class="ico" src="assets/img/icons/vision.png" alt="">
+        <h3>Our Vision</h3>
+        <p>To position Georgia as a regional hub for eCommerce innovation, empower businesses through knowledge and visibility, and create a unified voice for digital commerce advancement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 8 · CTA / CONTACT ══════════════ -->
+<footer class="cta" id="contact">
+  <div class="wrap cta-in">
+    <h2><em>Let&rsquo;s build the future</em><br>of eCommerce together</h2>
+    <div class="btns">
+      <a class="btn btn-primary" href="mailto:egadzek@ecag.ge?subject=eCommerce%20Georgia%202026%20%E2%80%94%20Partnership">Become a Partner</a>
+      <a class="btn btn-ghost" href="mailto:egadzek@ecag.ge?subject=eCommerce%20Georgia%202026%20%E2%80%94%20Speaking%20proposal">Apply to Speak</a>
+    </div>
+    <div class="contact">
+      <span>For more information contact:</span>
+      <strong>Ketevan Egadze</strong>
+      <a href="mailto:egadzek@ecag.ge">egadzek@ecag.ge</a>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.2a6.6 6.6 0 100 13.2 6.6 6.6 0 000-13.2zm0 10.9a4.3 4.3 0 110-8.6 4.3 4.3 0 010 8.6zm6.8-11.1a1.5 1.5 0 11-3.1 0 1.5 1.5 0 013.1 0z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.9 8.5H4V20h2.9V8.5zM5.4 4a1.7 1.7 0 100 3.4 1.7 1.7 0 000-3.4zM20 13.7c0-3.2-1.7-4.7-4-4.7-1.8 0-2.6 1-3.1 1.7V8.5H10V20h2.9v-6.3c0-1.4.8-2.2 1.9-2.2 1.1 0 1.7.7 1.7 2.2V20H20v-6.3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-in">
+      <img src="assets/img/logo.png" alt="eCommerce Association Georgia">
+      <span>6 November 2026 &middot; Sheraton Grand Tbilisi Metekhi Palace</span>
+      <span>&copy; 2026 eCommerce Association Georgia</span>
+    </div>
   </div>
 </footer>
 
 <script>
-/* ---- Where every "Tickets" button points. Swap for the real ticketing URL. ---- */
-const TICKETS_URL = "mailto:info@ecag.ge?subject=Tickets%20%E2%80%94%20eCommerce%20Georgia%202026";
+// sticky nav border
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('stuck', window.scrollY > 12);
+onScroll(); addEventListener('scroll', onScroll, {passive:true});
 
-document.body.classList.remove("no-js");
-document.querySelectorAll(".js-tickets").forEach(a => a.href = TICKETS_URL);
+// mobile menu
+const toggle = document.getElementById('navtoggle');
+toggle.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', String(open));
+});
+document.getElementById('navlinks').addEventListener('click', e => {
+  if (e.target.tagName === 'A') { nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+});
 
-/* nav: solid background once scrolled, mobile menu */
-const nav = document.getElementById("nav"), toggle = document.getElementById("navtoggle");
-const onScroll = () => nav.classList.toggle("scrolled", scrollY > 24);
-addEventListener("scroll", onScroll, {passive:true}); onScroll();
-const setMenu = open => { nav.classList.toggle("open", open); toggle.setAttribute("aria-expanded", open); toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu"); };
-toggle.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
-document.querySelectorAll("#navlinks a").forEach(a => a.addEventListener("click", () => setMenu(false)));
-addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+// package tabs
+const tabs = [...document.querySelectorAll('.tab')];
+tabs.forEach((tab, i) => {
+  tab.addEventListener('click', () => select(i));
+  tab.addEventListener('keydown', e => {
+    const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!d) return;
+    e.preventDefault();
+    const n = (i + d + tabs.length) % tabs.length;
+    select(n); tabs[n].focus();
+  });
+});
+function select(i){
+  tabs.forEach((t, n) => {
+    t.setAttribute('aria-selected', String(n === i));
+    document.getElementById(t.getAttribute('aria-controls')).hidden = n !== i;
+  });
+}
 
-/* carousel */
-const track = document.getElementById("track"), prev = document.getElementById("prev"), next = document.getElementById("next");
-const step = () => track.querySelector("figure").getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
-const sync = () => { prev.disabled = track.scrollLeft < 4; next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 4; };
-prev.addEventListener("click", () => track.scrollBy({left:-step(), behavior:"smooth"}));
-next.addEventListener("click", () => track.scrollBy({left: step(), behavior:"smooth"}));
-track.addEventListener("scroll", sync, {passive:true}); addEventListener("resize", sync); sync();
-track.addEventListener("keydown", e => { if (e.key === "ArrowRight") next.click(); if (e.key === "ArrowLeft") prev.click(); });
-
-/* reveal on scroll */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px"});
-document.querySelectorAll(".rv").forEach(el => io.observe(el));
+// reveal on scroll
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+}, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
 </script>
 </body>
 </html>

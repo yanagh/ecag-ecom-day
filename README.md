@@ -1,15 +1,29 @@
 # eCommerce Georgia 2026 — website
 
 ```
-site/
-  index.html        attendee landing page — built from the designer's "Web Visual 2026" mockup
-  sponsors.html     the earlier sponsor/partner page (packages, pricing), linked from the footer
-  assets/img/v26/   assets exported from "Web Visual 2026 _Folder"
-  assets/img/       older assets from the deck (event photos, partner walls, logo, icons)
+site/                     ← this folder is what gets published (GitHub Pages)
+  index.html              the live page: sponsors / partners (packages, pricing)
+  assets/img/v26/         assets exported from "Web Visual 2026 _Folder"
+  assets/img/             older assets from the deck (event photos, partner walls, logo, icons)
+
+hidden/                   ← NOT published — kept outside site/ on purpose
+  attendee-page.html      attendee page built from the designer's mockup (speakers, demos, tickets)
 ```
 
-HTML, CSS and JS are inline — no build step. Drop `site/` on any static host.
+HTML, CSS and JS are inline — no build step. Upload the contents of `site/` to the host.
 Locally, from the project root: `python3 serve.py`, then open <http://127.0.0.1:4321>.
+The hidden page can be opened straight from disk: `hidden/attendee-page.html`.
+
+## Bringing the attendee page back (once speakers, demos and tickets are ready)
+
+1. Move `hidden/attendee-page.html` into `site/` and change every `../site/assets/` in it back to `assets/`.
+2. Decide which page is the front door. The attendee page was designed as the main page, so the usual
+   move is: rename the current `site/index.html` to `site/sponsors.html`, and the attendee page to
+   `site/index.html`.
+3. Re-add the cross-links: the attendee footer links to `sponsors.html`
+   ("Partnership packages →"); the sponsors footer had "Attending? Visit the event page →" to `index.html`.
+
+The design-system notes below describe the attendee page.
 
 ## Design system (from the mockup)
 
